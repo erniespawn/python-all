@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: beanstalkt
+Version: 0.7.0
+Summary: An async beanstalkd client for Tornado
+Home-page: https://bitbucket.org/nephics/beanstalkt
+Author: Jacob Sondergaard
+Author-email: jacob@nephics.com
+License: http://www.apache.org/licenses/LICENSE-2.0
+Download-URL: https://bitbucket.org/nephics/beanstalkt/get/v0.7.0.tar.gz
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Requires: tornado(>=3.2)

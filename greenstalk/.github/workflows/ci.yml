@@ -1,0 +1,29 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.8, 3.7, 3.6]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install beanstalkd
+        env:
+          BEANSTALKD_VERSION: 1.12
+        run: |
+          wget https://github.com/beanstalkd/beanstalkd/archive/v${BEANSTALKD_VERSION}.tar.gz
+          tar -xzvf v${BEANSTALKD_VERSION}.tar.gz
+          pushd beanstalkd-${BEANSTALKD_VERSION} && make && sudo make install && popd
+      - name: Install Python dependencies
+        run: |
+          pip install pytest
+          pip install --use-feature=in-tree-build .
+      - name: Run tests
+        run: make test
